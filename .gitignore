@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Bower files
+/src/DotNetConfDemo1/wwwroot/lib/**
+/src/DotNetConfDemo2/wwwroot/lib/**

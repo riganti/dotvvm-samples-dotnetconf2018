@@ -1,0 +1,8 @@
+{
+  "name": "dotnetconfdemo2",
+  "private": true,
+  "dependencies": {
+		"jquery" : "",
+		"bootstrap" : "3.3.7"
+  }
+}

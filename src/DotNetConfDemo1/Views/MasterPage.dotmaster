@@ -1,0 +1,21 @@
+﻿@viewModel DotNetConfDemo1.ViewModels.MasterPageViewModel, DotNetConfDemo1
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DotNetConfDemo1</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <dot:ContentPlaceHolder ID="MainContent" />
+
+    </div>
+
+</body>
+</html>

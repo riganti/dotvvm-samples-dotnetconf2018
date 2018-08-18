@@ -1,0 +1,63 @@
+﻿@viewModel DotNetConfDemo1.ViewModels.DefaultViewModel, DotNetConfDemo1
+@masterPage Views/Commercial/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <bs:Panel Type="Primary">
+        <HeaderTemplate>
+            Billing Address
+        </HeaderTemplate>
+        <ContentTemplate>
+
+            <bs:Form DataContext="{value: BillingAddress}"
+                     Validator.InvalidCssClass="has-error">
+
+                <bs:FormGroup LabelText="Country">
+                    <dot:ComboBox SelectedValue="{value: CountryId}"
+                                  DataSource="{value: _root.Countries}"
+                                  ItemValueBinding="{value: Id}"
+                                  ItemTextBinding="{value: Name}"
+                                  SelectionChanged="{command: _root.OnCountryChanged()}" />
+                </bs:FormGroup>
+
+                <bs:FormGroup LabelText="State">
+                    <dot:ComboBox SelectedValue="{value: StateId}"
+                                  DataSource="{value: _root.States}"
+                                  ItemValueBinding="{value: Id}"
+                                  ItemTextBinding="{value: Name}"
+                                  Enabled="{value: _root.States.Count > 0}" />
+                </bs:FormGroup>
+
+                <bs:TextBoxGroup LabelText="Name" Text="{value: Name}" />
+
+                <bs:FormGroup LabelText="Are you a company?">
+                    <bs:RadioButton CheckedItem="{value: IsCompany}"
+                                    CheckedValue="{value: true}"
+                                    Text="yes"
+                                    IsInline="true" />
+                    <bs:RadioButton CheckedItem="{value: IsCompany}"
+                                    CheckedValue="{value: false}"
+                                    Text="no"
+                                    IsInline="true" />
+                </bs:FormGroup>
+
+                <bs:TextBoxGroup LabelText="Tax Number" Text="{value: TaxNumber}"
+                                 Visible="{value: IsCompany}" />
+
+                <bs:TextBoxGroup LabelText="Address Line 1" Text="{value: Line1}" />
+                <bs:TextBoxGroup LabelText="Address Line 2" Text="{value: Line2}" />
+                <bs:TextBoxGroup LabelText="City" Text="{value: City}" />
+                <bs:TextBoxGroup LabelText="ZIP" Text="{value: ZIP}" />
+
+            </bs:Form>
+
+            <dot:ValidationSummary class="text-danger"
+                                    Validation.Target="{value: BillingAddress}" />
+        </ContentTemplate>
+        <FooterTemplate>
+            <dot:Button Text="Submit Order" Click="{command: SubmitOrder()}"
+                        class="btn btn-primary" />
+        </FooterTemplate>        
+    </bs:Panel>
+
+</dot:Content>
+

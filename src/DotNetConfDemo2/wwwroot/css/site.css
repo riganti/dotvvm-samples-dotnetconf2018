@@ -1,0 +1,24 @@
+﻿.filters .form-group {
+    vertical-align: top;
+    padding-right: 30px;
+}
+    .filters .form-group.button {
+        vertical-align: bottom;
+        padding-right: 0px;
+    }
+
+.table td {
+    vertical-align: middle !important;
+}
+
+.name-column {
+    font-weight: bold;
+}
+
+.discontinued {
+    font-style: italic;
+    color: gray;
+}
+.reoder {
+    background-color: lightsalmon;
+}

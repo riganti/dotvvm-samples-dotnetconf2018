@@ -1,0 +1,124 @@
+﻿@viewModel DotNetConfDemo2.ViewModels.DefaultViewModel, DotNetConfDemo2
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+	<bs:Jumbotron>
+        <h1>Northwind Product Catalog</h1>
+    </bs:Jumbotron>
+
+    <!-- Filters -->
+    <bs:Panel>
+        <bs:Form Type="Inline" DataContext="{value: Filters}" class="filters">
+
+            <bs:TextBoxGroup LabelText="Product" 
+                             Text="{value: SearchText}" />
+            <bs:CheckBoxGroup LabelText="Include discontinued" 
+                              Checked="{value: AllowDiscontinued}" />
+            <bs:ComboBoxGroup LabelText="Category"
+                              SelectedValue="{value: CategoryId}"
+                              EmptyItemText="(all categories)"
+                              DataSource="{value: _root.Categories}"
+                              DisplayMember="Name"
+                              ValueMember="Id" />
+            <bs:FormGroup class="button">
+                <bs:Button Type="Primary" Text="Apply Filters" IsSubmitButton="true"
+                           Click="{command: _root.ApplyFilters()}" />
+            </bs:FormGroup>
+        </bs:Form>
+    </bs:Panel>
+
+    <bs:Alert Text="{value: AlertText}" Type="{value: AlertType}" />
+
+    <!-- Grid -->
+    <bs:GridView DataSource="{value: Products}" Type="Striped">
+        <Columns>
+            <dot:GridViewTextColumn HeaderText="Product" 
+                                    ValueBinding="{value: Name}"
+                                    AllowSorting="true"
+                                    CssClass="name-column"/>
+
+            <dot:GridViewTextColumn HeaderText="Category" 
+                                    ValueBinding="{value: Category}" 
+                                    AllowSorting="true"/>
+
+            <dot:GridViewTextColumn HeaderText="Supplier" 
+                                    ValueBinding="{value: Supplier}" 
+                                    AllowSorting="true"/>
+
+            <dot:GridViewTextColumn HeaderText="Qty per Unit" 
+                                    ValueBinding="{value: QuantityPerUnit}" />
+
+            <dot:GridViewTextColumn HeaderText="Unit Price" 
+                                    ValueBinding="{value: UnitPrice}" 
+                                    FormatString="c2" 
+                                    AllowSorting="true"/>
+
+            <dot:GridViewTextColumn HeaderText="In Stock" 
+                                    ValueBinding="{value: UnitsInStock}" 
+                                    AllowSorting="true"/>
+
+            <dot:GridViewTextColumn HeaderText="On Order" 
+                                    ValueBinding="{value: UnitsOnOrder}" 
+                                    AllowSorting="true"/>
+
+            <dot:GridViewTemplateColumn>
+                <bs:LinkButton Click="{command: _root.ReorderDialog.Show(_this)}"
+                               Validation.Enabled="false">
+                    <bs:GlyphIcon Icon="Repeat" />
+                </bs:LinkButton>
+            </dot:GridViewTemplateColumn>
+
+        </Columns>
+        <RowDecorators>
+            <dot:Decorator class-discontinued="{value: Discontinued}"
+                           class-reoder="{value: UnitsInStock + UnitsOnOrder < ReorderLevel}"/>
+        </RowDecorators>
+    </bs:GridView>
+    <bs:DataPager DataSet="{value: Products}" />
+
+    <!-- Reorder Dialog -->
+    <bs:ModalDialog IsDisplayed="{value: ReorderDialog.IsDisplayed}"
+                    HeaderText="Reorder Product">
+        <ContentTemplate>
+
+            <bs:Form DataContext="{value: ReorderDialog}">
+                <bs:FormGroup LabelText="Product">
+                    <bs:FormStaticValue>
+                        {{value: Product.Name}}
+                    </bs:FormStaticValue>
+                </bs:FormGroup>
+                <bs:FormGroup LabelText="In Stock">
+                    <bs:FormStaticValue>
+                        {{value: Product.UnitsInStock}}
+                    </bs:FormStaticValue>
+                </bs:FormGroup>
+                <bs:FormGroup LabelText="On Order">
+                    <bs:FormStaticValue>
+                        {{value: Product.UnitsOnOrder}}
+                    </bs:FormStaticValue>
+                </bs:FormGroup>
+                <bs:FormGroup LabelText="Total">
+                    <bs:FormStaticValue>
+                        <strong>{{value: Product.UnitsInStock + Product.UnitsOnOrder}}</strong>
+                    </bs:FormStaticValue>
+                </bs:FormGroup>
+                <bs:FormGroup LabelText="Reorder Level">
+                    <bs:FormStaticValue>
+                        {{value: Product.ReorderLevel}}
+                    </bs:FormStaticValue>
+                </bs:FormGroup>
+
+                <bs:TextBoxGroup LabelText="Units to reorder" 
+                                 Text="{value: UnitsToReorder}" />
+            </bs:Form>
+
+        </ContentTemplate>
+        <FooterTemplate>
+            <bs:Button Text="Submit Request" Type="Primary" IsSubmitButton="true"
+                       Click="{command: ReorderDialog.SubmitRequest()}" />
+            <bs:Button Text="Cancel" Type="Default"
+                       Click="{command: ReorderDialog.Close()}" />
+        </FooterTemplate>
+    </bs:ModalDialog>
+
+</dot:Content>

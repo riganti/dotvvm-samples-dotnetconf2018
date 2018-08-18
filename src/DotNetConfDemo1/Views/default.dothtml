@@ -1,0 +1,114 @@
+﻿@viewModel DotNetConfDemo1.ViewModels.DefaultViewModel, DotNetConfDemo1
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Billing Address
+        </div>
+        <div class="panel-body">
+
+            <div class="form" 
+                 DataContext="{value: BillingAddress}"
+                 Validator.InvalidCssClass="has-error">
+
+                <!-- Country -->
+                <div class="form-group">
+                    <label class="control-label">Country</label>
+                    <div>
+                        <dot:ComboBox SelectedValue="{value: CountryId}"
+                                      DataSource="{value: _root.Countries}"
+                                      ItemValueBinding="{value: Id}"
+                                      ItemTextBinding="{value: Name}"
+                                      SelectionChanged="{command: _root.OnCountryChanged()}"
+                                      class="form-control" />
+                    </div>
+                </div>
+
+                <!-- State -->
+                <div class="form-group">
+                    <label class="control-label">State</label>
+                    <div>
+                        <dot:ComboBox SelectedValue="{value: StateId}"
+                                      DataSource="{value: _root.States}"
+                                      ItemValueBinding="{value: Id}"
+                                      ItemTextBinding="{value: Name}"
+                                      Enabled="{value: _root.States.Count > 0}"
+                                      class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group" Validator.Value="{value: Name}">
+                    <label class="control-label">Name</label>
+                    <div>
+                        <dot:TextBox Text="{value: Name}" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Is Company -->
+                <div class="form-group">
+                    <label class="control-label">Are you a company?</label>
+                    <div>
+                        <dot:RadioButton CheckedItem="{value: IsCompany}"
+                                         CheckedValue="{value: true}"
+                                         Text="yes"
+                                         class="radio-inline" />
+                        <dot:RadioButton CheckedItem="{value: IsCompany}"
+                                         CheckedValue="{value: false}"
+                                         Text="no"
+                                         class="radio-inline" />
+                    </div>
+                </div>
+
+                <!-- Tax Number -->
+                <div class="form-group" Visible="{value: IsCompany}">
+                    <label class="control-label">Tax Number</label>
+                    <div>
+                        <dot:TextBox Text="{value: TaxNumber}" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Address Line 1 -->
+                <div class="form-group" Validator.Value="{value: Line1}">
+                    <label class="control-label">Address Line 1</label>
+                    <div>
+                        <dot:TextBox Text="{value: Line1}" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Address Line 2 -->
+                <div class="form-group">
+                    <label class="control-label">Address Line 2</label>
+                    <div>
+                        <dot:TextBox Text="{value: Line2}" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- City -->
+                <div class="form-group" Validator.Value="{value: City}">
+                    <label class="control-label">City</label>
+                    <div>
+                        <dot:TextBox Text="{value: City}" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- ZIP -->
+                <div class="form-group">
+                    <label class="control-label">ZIP</label>
+                    <div>
+                        <dot:TextBox Text="{value: ZIP}" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <dot:ValidationSummary class="text-danger"
+                                   Validation.Target="{value: BillingAddress}" />
+        </div>
+        <div class="panel-footer">
+            <dot:Button Text="Submit Order" Click="{command: SubmitOrder()}"
+                        class="btn btn-primary"/>
+        </div>
+    </div>
+
+</dot:Content>
