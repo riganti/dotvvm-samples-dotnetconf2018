@@ -1,0 +1,19 @@
+﻿@viewModel DotNetConfDemo4.ViewModels.DefaultViewModel, DotNetConfDemo4
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Northwind Products</h1>
+
+    <dot:GridView DataSource="{value: Products}" class="table table-striped">
+        <dot:GridViewTextColumn HeaderText="Product" ValueBinding="{value: Name}"/>
+        <dot:GridViewTextColumn HeaderText="Category" ValueBinding="{value: Category}"/>
+        <dot:GridViewTextColumn HeaderText="Supplier" ValueBinding="{value: Supplier}" />
+        <dot:GridViewTextColumn HeaderText="Qty per Unit" ValueBinding="{value: QuantityPerUnit}" />
+        <dot:GridViewTextColumn HeaderText="Unit Price" ValueBinding="{value: UnitPrice}" />
+        <dot:GridViewTextColumn HeaderText="In Stock" ValueBinding="{value: UnitsInStock}" />
+        <dot:GridViewTextColumn HeaderText="On Order" ValueBinding="{value: UnitsOnOrder}" />
+    </dot:GridView>
+
+    <dot:DataPager class="pagination" DataSet="{value: Products}" />
+
+</dot:Content>

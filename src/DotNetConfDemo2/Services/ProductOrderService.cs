@@ -1,6 +1,6 @@
-﻿using DotNetConfDemo2.Model;
+﻿using DotNetConfDemo4.Model;
 
-namespace DotNetConfDemo2.Services
+namespace DotNetConfDemo4.Services
 {
     public class ProductOrderService
     {

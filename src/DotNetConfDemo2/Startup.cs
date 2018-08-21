@@ -7,11 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using DotVVM.Framework.Hosting;
-using DotNetConfDemo2.Model;
+using DotNetConfDemo4.Model;
 using Microsoft.EntityFrameworkCore;
-using DotNetConfDemo2.Services;
+using DotNetConfDemo4.Services;
 
-namespace DotNetConfDemo2
+namespace DotNetConfDemo4
 {
     public class Startup
     {

@@ -1,4 +1,4 @@
-﻿namespace DotNetConfDemo2.Services
+﻿namespace DotNetConfDemo4.Services
 {
     public class ProductFilterDTO
     {

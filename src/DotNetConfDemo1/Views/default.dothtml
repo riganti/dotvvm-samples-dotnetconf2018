@@ -21,6 +21,7 @@
                                       ItemValueBinding="{value: Id}"
                                       ItemTextBinding="{value: Name}"
                                       SelectionChanged="{command: _root.OnCountryChanged()}"
+                                      Validation.Enabled="false"
                                       class="form-control" />
                     </div>
                 </div>

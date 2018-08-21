@@ -1,10 +1,10 @@
-﻿using DotNetConfDemo2.Model;
+﻿using DotNetConfDemo4.Model;
 using DotVVM.Framework.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DotNetConfDemo2.Services
+namespace DotNetConfDemo4.Services
 {
     public class ProductCatalogService
     {

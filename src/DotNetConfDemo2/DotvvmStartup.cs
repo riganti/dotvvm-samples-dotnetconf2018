@@ -4,7 +4,7 @@ using DotVVM.Framework.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using DotVVM.Framework.Controls.Bootstrap;
 
-namespace DotNetConfDemo2
+namespace DotNetConfDemo4
 {
     public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
     {

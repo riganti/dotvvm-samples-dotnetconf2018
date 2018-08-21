@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Hosting;
-using DotNetConfDemo2.Services;
+using DotNetConfDemo4.Services;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.Controls.Bootstrap;
 
-namespace DotNetConfDemo2.ViewModels
+namespace DotNetConfDemo4.ViewModels
 {
     public class DefaultViewModel : MasterPageViewModel
     {
@@ -33,6 +33,13 @@ namespace DotNetConfDemo2.ViewModels
                 SortDescending = false
             }
         };
+
+
+
+
+
+
+
 
         [Bind(Direction.ServerToClient)]
         public string AlertText { get; set; }

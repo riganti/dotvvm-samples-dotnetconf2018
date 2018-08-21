@@ -1,9 +1,9 @@
-﻿using DotNetConfDemo2.Services;
+﻿using DotNetConfDemo4.Services;
 using DotVVM.Framework.ViewModel;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetConfDemo2.ViewModels
+namespace DotNetConfDemo4.ViewModels
 {
     public class ReoderDialogViewModel : DotvvmViewModelBase
     {

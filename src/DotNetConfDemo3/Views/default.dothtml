@@ -1,0 +1,29 @@
+﻿@viewModel DotNetConfDemo3.ViewModels.DefaultViewModel, DotNetConfDemo3
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <h1>Calculator</h1>
+    <p>
+        Number 1:
+        <dot:TextBox Text="{value: Number1}" />
+    </p>
+    <p>
+        Number 2:
+        <dot:TextBox Text="{value: Number2}" />
+    </p>
+    <p>
+        <dot:CheckBox Text="Allow Number 3" Checked="{value: AllowNumber3}" />
+    </p>
+    <p Visible="{value: AllowNumber3}">
+        Number 3:
+        <dot:TextBox Text="{value: Number3}" />
+    </p>
+    <p>
+        Result:
+        {{value: Result}}
+    </p>
+    <p>
+        <dot:Button Text="Calculate!" Click="{command: Calculate()}" />
+    </p>
+
+</dot:Content>
